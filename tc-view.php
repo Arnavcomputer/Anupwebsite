@@ -1,0 +1,11 @@
+<?php
+require_once "config/database.php";
+function e($v){return htmlspecialchars((string)$v,ENT_QUOTES,'UTF-8');}
+$ad=trim($_GET['admission_no']??'');
+$st=$pdo->prepare('SELECT * FROM tc_records WHERE admission_no=? LIMIT 1');$st->execute([$ad]);$r=$st->fetch();
+if(!$r){http_response_code(404);die('TC record not found.');}
+$file=$r['tc_file'];
+if(!$file || !is_file(__DIR__.'/'.$file)){http_response_code(404);die('Uploaded TC file is unavailable.');}
+$mime=function_exists('mime_content_type')?mime_content_type(__DIR__.'/'.$file):'application/octet-stream';
+if(isset($_GET['download'])){header('Content-Type: '.$mime);header('Content-Disposition: attachment; filename="TC-'.preg_replace('/[^A-Za-z0-9_-]/','_', $r['admission_no']).'.'.strtolower(pathinfo($file,PATHINFO_EXTENSION)).'"');header('Content-Length: '.filesize(__DIR__.'/'.$file));readfile(__DIR__.'/'.$file);exit;}
+?><!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>View TC - <?=e($r['admission_no'])?></title><link rel="stylesheet" href="<?=rtrim(dirname($_SERVER['SCRIPT_NAME']),'/')?>/css/style.css"></head><body><?php include 'partials-header.php';?><section class="page-hero"><div class="container"><span class="eyebrow">Verified TC</span><h1>Transfer Certificate</h1><p>Admission No.: <b><?=e($r['admission_no'])?></b> · <?=e($r['student_name'])?></p></div></section><section class="section"><div class="container"><div class="content-card tc-view-card"><div class="tc-view-head"><div><span class="verified-badge">✓ Verified</span><h2><?=e($r['student_name']?:'Student')?></h2><p>Admission No. <b><?=e($r['admission_no'])?></b> · Class <?=e($r['class_name'])?></p></div><div class="tc-result-actions"><a class="btn ghost" href="tc-verification.php?admission_no=<?=urlencode($r['admission_no'])?>">Back</a><a class="btn primary" href="tc-view.php?admission_no=<?=urlencode($r['admission_no'])?>&download=1">Download TC</a></div></div><div class="tc-document-frame"><?php if(strtolower(pathinfo($file,PATHINFO_EXTENSION))==='pdf'): ?><iframe src="<?=e($file)?>" title="Transfer Certificate"></iframe><?php else: ?><img src="<?=e($file)?>" alt="Transfer Certificate"><?php endif;?></div></div></div></section><?php include 'partials-footer.php';?><script src="js/site.js"></script></body></html>

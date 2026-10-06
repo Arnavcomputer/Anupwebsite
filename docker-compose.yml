@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  web:
+    image: php:8.2-apache
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+    # Enable mysqli extension which the project likely uses
+    command: >
+      bash -c "docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable mysqli pdo pdo_mysql && apache2-foreground"
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: "gyandayini_academy"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./database/install.sql:/docker-entrypoint-initdb.d/1_install.sql
+
+volumes:
+  db_data:
