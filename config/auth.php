@@ -12,7 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     foreach (['image', 'image_url', 'file_url'] as $key) {
         if (!empty($_POST[$key]) && is_string($_POST[$key])) {
             if (strpos($_POST[$key], 'drive.google.com/file/d/') !== false && preg_match('#/d/([a-zA-Z0-9_-]+)#', $_POST[$key], $m)) {
-                $_POST[$key] = 'https://drive.google.com/uc?export=view&id=' . $m[1];
+                // Use Google's dedicated image CDN which bypasses the recent 3rd-party cookie blocks
+                $_POST[$key] = 'https://lh3.googleusercontent.com/d/' . $m[1];
             }
         }
     }
