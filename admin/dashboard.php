@@ -8,3 +8,4 @@ $counts=[]; foreach(["facilities","events","news","gallery","downloads","documen
 <div class="quick"><a href="site.php">Edit Site Settings</a><a href="pages.php">Edit Messages</a><a href="facilities.php">Manage Facilities</a><a href="gallery.php">Manage Photos</a><a href="enquiries.php">View Enquiries</a></div></div>
 <div class="panel"><h2>Admin URL</h2><code>http://localhost/Gyandayini_Girls_Academy_Dynamic/admin/login.php</code></div>
 <?php require "_bottom.php"; ?>
+

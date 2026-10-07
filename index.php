@@ -14,7 +14,7 @@ $rankers=$pdo->query("SELECT * FROM result_rankers WHERE active=1 ORDER BY sort_
 $cbseLinks=$pdo->query("SELECT * FROM cbse_links WHERE active=1 ORDER BY sort_order,id")->fetchAll();
 $pages=$pdo->query("SELECT * FROM pages")->fetchAll();$page=[];foreach($pages as $p)$page[$p['slug']]=$p;
 ?>
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title><?=e($school)?> | Official Website</title><link rel="stylesheet" href="<?=rtrim(dirname($_SERVER['SCRIPT_NAME']),'/')?>/css/style.css"></head><body>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title><?=e($school)?> | Official Website</title><link rel="stylesheet" href="<?=rtrim(dirname($_SERVER['SCRIPT_NAME']),'/')?>/css/style.css"><link rel="icon" type="image/png" href="assets/images/gga-logo.png"></head><body>
 <header class="site-header">
 <div class="topbar"><div class="container topbar-in"><span>📍 <?=e($address)?></span><span>✉ <?=e($email)?> &nbsp; | &nbsp; ☎ <?=e($phone)?></span></div></div>
 <div class="brandbar container"><a class="school-brand" href="index.php"><img src="assets/images/gga-logo.png"><div><div class="school-name"><?=e($school)?></div><div class="trust">Under the aegis of <?=e($trust)?></div><div class="aff"><?=e($aff)?></div></div></a><div class="trust-brand"><img src="assets/images/trust-logo.png"><span><?=e($trust)?></span></div></div>
@@ -32,3 +32,4 @@ $pages=$pdo->query("SELECT * FROM pages")->fetchAll();$page=[];foreach($pages as
 <section class="section gallery-strip"><div class="container"><div class="section-head"><span class="eyebrow">Gallery</span><h2>Moments at GGA</h2></div><div class="mini-gallery"><?php foreach($gallery as $g): ?><a href="gallery.php"><img src="<?=e($g['image'])?>" alt="<?=e($g['title'])?>"></a><?php endforeach;?></div></div></section>
 <footer class="footer"><div class="container footer-grid"><div><img class="footer-logo" src="assets/images/gga-logo.png"><h3><?=e($school)?></h3><p>Under the aegis of <?=e($trust)?></p></div><div><h4>Quick Links</h4><a href="about.php">About School</a><a href="admission.php">Admission</a><a href="facilities.php">Facilities</a><a href="gallery.php">Gallery</a></div><div><h4>Contact</h4><p>📍 <?=e($address)?></p><p>✉ <?=e($email)?></p><p>☎ <?=e($phone)?></p></div><div><h4>Follow</h4><a href="<?=e($fb)?>" target="_blank">Facebook</a><a href="<?=e($ig)?>" target="_blank">Instagram</a></div></div><div class="copyright">© <?=date('Y')?> <?=e($school)?>. All Rights Reserved.</div></footer>
 <script src="js/site.js"></script></body></html>
+

@@ -27,3 +27,4 @@ $admin = $admin->fetch();
     <button name="save" class="primary">Update Profile</button>
 </form>
 <?php require "_bottom.php"; ?>
+

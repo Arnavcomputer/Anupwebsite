@@ -9,3 +9,4 @@ $rows=$pdo->query("SELECT * FROM pages ORDER BY id")->fetchAll();
 <label>Section<input name="title" value="<?=e($r['title'])?>"></label><label>Image URL<input name="image" value="<?=e($r['image'])?>"></label>
 <label class="full">Message / Content<textarea name="content" rows="8"><?=e($r['content'])?></textarea></label></div><button class="primary">Save <?=e($r['slug'])?></button></form><?php endforeach; ?>
 <?php require "_bottom.php"; ?>
+

@@ -9,3 +9,4 @@ $rows=$pdo->query("SELECT * FROM facilities ORDER BY sort_order,id")->fetchAll()
 <label>Photo URL<input name="image" value="<?=e($edit['image']??'')?>"></label><label class="full">Description<textarea name="description"><?=e($edit['description']??'')?></textarea></label><button class="primary" name="save">Save Facility</button></form></div>
 <div class="table-wrap panel"><table><tr><th>Photo</th><th>Facility</th><th>Actions</th></tr><?php foreach($rows as $r): ?><tr><td><img class="thumb" src="<?=e($r['image'])?>"></td><td><b><?=e($r['icon'])?> <?=e($r['title'])?></b><div><?=e($r['description'])?></div></td><td><a href="?edit=<?=$r['id']?>">Edit</a> <form style="display:inline" method="post"><button class="link danger" name="delete" value="<?=$r['id']?>">Delete</button></form></td></tr><?php endforeach;?></table></div>
 <?php require "_bottom.php"; ?>
+

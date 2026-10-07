@@ -18,3 +18,4 @@ $settings=[]; foreach($pdo->query("SELECT `key`,`value` FROM settings") as $r) $
 <label class="full">Announcement Text<textarea name="announcement"><?=e($settings['announcement']??"Admissions & school updates — visit the academy office for current information.")?></textarea></label>
 <button name="save" class="primary">Save All Settings</button></form>
 <?php require "_bottom.php"; ?>
+
