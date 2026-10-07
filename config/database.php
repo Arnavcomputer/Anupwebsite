@@ -2,9 +2,9 @@
 // HOSTINGER LIVE DATABASE DETAILS
 // Replace these with the ones you create in Hostinger -> Databases
 $host = "localhost"; 
-$db   = "YOUR_HOSTINGER_DB_NAME";
-$user = "YOUR_HOSTINGER_DB_USER";
-$pass = "YOUR_HOSTINGER_DB_PASSWORD";
+$db   = "u831108810_gga_school";
+$user = "u831108810_gga_admin";
+$pass = "Gga@2026";
 
 // Local Docker Database details (Automatically used when you test on localhost)
 if (isset($_SERVER['HTTP_HOST']) && (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false)) {
