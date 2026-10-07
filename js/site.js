@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded',()=>{
  const links=document.querySelector('.nav-links');
  if(toggle&&links){toggle.addEventListener('click',()=>links.classList.toggle('show'));}
  document.querySelectorAll('.dropdown > a').forEach(a=>a.addEventListener('click',e=>{if(window.innerWidth<=950){e.preventDefault();a.parentElement.classList.toggle('open');}}));
+ document.querySelectorAll('.section-head, .event-card, .news-card, .facility-card, .stats > div, .gallery-grid figure, .doc-card, .resource-row, .about-hero-card, .message-preview, .cbse-link, .tc-public-option, .tc-public-note, .single-message img, .big-message img, .split > div, .split > img, .form').forEach(el => el.classList.add('reveal'));
  document.querySelectorAll('.reveal').forEach(el=>{const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.12});io.observe(el)});
  if(nav){
    const placeholder=document.createElement('div'); placeholder.className='nav-placeholder'; nav.parentNode.insertBefore(placeholder,nav.nextSibling);
