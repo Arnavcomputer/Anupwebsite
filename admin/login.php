@@ -20,5 +20,5 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
 <body class="login-page"><div class="login-card">
 <img src="../assets/images/gga-logo.png" class="login-logo"><h1>GGA Admin Panel</h1><p>Gyandayini Girls’ Academy</p>
 <?php if($error): ?><div class="alert danger"><?=htmlspecialchars($error)?></div><?php endif; ?>
-<form method="post"><label>Email</label><input name="email" type="email" required value="admin@gga.local"><label>Password</label><input name="password" type="password" required><button>Login to Dashboard</button></form>
-<div class="login-note">Default: admin@gga.local / admin123</div></div></body></html>
+<form method="post"><label>Email</label><input name="email" type="email" required><label>Password</label><input name="password" type="password" required><button>Login to Dashboard</button></form>
+</div></body></html>
